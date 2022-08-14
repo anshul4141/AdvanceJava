@@ -5,25 +5,43 @@
 <web-app>
   <display-name>Archetype Created Web Application</display-name>
   <servlet>
-  	<servlet-name>LoginCtrl</servlet-name>
-  	<display-name>LoginCtrl</display-name>
-  	<description></description>
-  	<servlet-class>com.raystec.LoginCtrl</servlet-class>
-  </servlet>
-  <servlet>
   	<servlet-name>RegistrationCtrl</servlet-name>
   	<display-name>RegistrationCtrl</display-name>
   	<description></description>
-  	<servlet-class>com.raystec.RegistrationCtrl</servlet-class>
+  	<servlet-class>com.rays.ctrl.RegistrationCtrl</servlet-class>
   </servlet>
   <servlet>
-  	<servlet-name>UserServlet</servlet-name>
-  	<display-name>UserServlet</display-name>
+  	<servlet-name>LoginCtrl</servlet-name>
+  	<display-name>LoginCtrl</display-name>
   	<description></description>
-  	<servlet-class>com.raystec.UserServlet</servlet-class>
+  	<servlet-class>com.rays.ctrl.LoginCtrl</servlet-class>
+  </servlet>
+  <servlet>
+  	<servlet-name>WelcomCtrl</servlet-name>
+  	<display-name>WelcomCtrl</display-name>
+  	<description></description>
+  	<servlet-class>com.rays.ctrl.WelcomCtrl</servlet-class>
+  </servlet>
+  <servlet>
+  	<servlet-name>ForgotPasswordCtrl</servlet-name>
+  	<display-name>ForgotPasswordCtrl</display-name>
+  	<description></description>
+  	<servlet-class>com.rays.ctrl.ForgotPasswordCtrl</servlet-class>
   </servlet>
   <servlet-mapping>
-  	<servlet-name>UserServlet</servlet-name>
-  	<url-pattern>/UserServlet</url-pattern>
+  	<servlet-name>RegistrationCtrl</servlet-name>
+  	<url-pattern>/RegistrationCtrl</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>LoginCtrl</servlet-name>
+  	<url-pattern>/LoginCtrl</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>WelcomCtrl</servlet-name>
+  	<url-pattern>/WelcomCtrl</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>ForgotPasswordCtrl</servlet-name>
+  	<url-pattern>/ForgotPasswordCtrl</url-pattern>
   </servlet-mapping>
 </web-app>

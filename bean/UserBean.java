@@ -1,24 +1,17 @@
-package com.raystec;
+package com.rays.bean;
 
 public class UserBean {
 
-	private String email;
 	private String fname;
 	private String lname;
+	private String userid;
+	private String pwd;
 	private String gender;
 	private String number;
 	private String dob;
 
 	public UserBean() {
 
-	}
-
-	public String getEmail() {
-		return email;
-	}
-
-	public void setEmail(String email) {
-		this.email = email;
 	}
 
 	public String getFname() {
@@ -35,6 +28,22 @@ public class UserBean {
 
 	public void setLname(String lname) {
 		this.lname = lname;
+	}
+
+	public String getUserid() {
+		return userid;
+	}
+
+	public void setUserid(String userid) {
+		this.userid = userid;
+	}
+
+	public String getPwd() {
+		return pwd;
+	}
+
+	public void setPwd(String pwd) {
+		this.pwd = pwd;
 	}
 
 	public String getGender() {

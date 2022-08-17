@@ -63,35 +63,6 @@ public class UserModel {
 
 	}
 
-	public void authentic(UserBean bean) throws Exception {
-
-		Class.forName(rb.getString("driver"));
-
-		Connection conn = DriverManager.getConnection(rb.getString("url"), rb.getString("user"),
-				rb.getString("password"));
-
-		PreparedStatement ps = conn.prepareStatement("select * from user where userid =? , and pwd =?");
-
-		ps.setString(1, bean.getUserid());
-		ps.setString(2, bean.getPwd());
-
-		ResultSet rs = ps.executeQuery();
-
-		UserBean ub = new UserBean();
-
-		while (rs.next()) {
-
-			ub.setFname(rs.getString(1));
-			ub.setLname(rs.getString(2));
-			ub.setUserid(rs.getString(3));
-			ub.setPwd(rs.getString(4));
-			ub.setGender(rs.getString(5));
-			ub.setNumber(rs.getString(7));
-			ub.setDob(rs.getString(8));
-
-		}
-	}
-
 	public UserBean Authenticate(String S, String t) throws Exception {
 
 		Class.forName(rb.getString("driver"));
@@ -115,13 +86,42 @@ public class UserModel {
 			bean.setGender(rs.getString(5));
 			bean.setNumber(rs.getString(6));
 			bean.setDob(rs.getString(7));
+
 		}
+
 		return bean;
 
 	}
 
-	public UserBean forget(String s) {
-		return null;
+	public UserBean forget(String a) throws Exception {
+
+		Class.forName(rb.getString("driver"));
+
+		Connection conn = DriverManager.getConnection(rb.getString("url"), rb.getString("user"),
+				rb.getString("password"));
+
+		PreparedStatement ps = conn.prepareStatement("Select * from user where userid = ?");
+
+		ps.setString(1, a);
+
+		ResultSet rs = ps.executeQuery();
+		UserBean bean = null;
+
+		while (rs.next()) {
+
+			bean = new UserBean();
+			bean.setId(rs.getInt(1));
+			bean.setFname(rs.getString(2));
+			bean.setLname(rs.getString(3));
+			bean.setUserid(rs.getString(4));
+			bean.setPwd(rs.getString(5));
+			bean.setGender(rs.getString(6));
+			bean.setNumber(rs.getString(7));
+			bean.setDob(rs.getString(8));
+
+		}
+		return bean;
+
 	}
 
 }

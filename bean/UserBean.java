@@ -2,6 +2,7 @@ package com.rays.bean;
 
 public class UserBean {
 
+	private int id;
 	private String fname;
 	private String lname;
 	private String userid;
@@ -12,6 +13,14 @@ public class UserBean {
 
 	public UserBean() {
 
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
 	}
 
 	public String getFname() {

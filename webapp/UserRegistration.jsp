@@ -4,12 +4,9 @@
 <html>
 <head>
 <body bgcolor="7D7CAF">
+	<%@ include file="Headar.jsp"%>
 	<title>My profile</title>
-	<div style="text-align: center;">
-		<img src="C:\Users\dell\Downloads\rays.png" width="200px" />
-	</div>
-	<hr>
-	<h1 style="text-align: center;">My Profile</h1>
+	<h1 style="text-align: center;">Please Registar here...</h1>
 	<form action="RegistrationCtrl" method="post">
 		<%
 		String fname = (String) request.getAttribute("fname");
@@ -98,8 +95,7 @@
 				</tr>
 				<tr>
 					<th><b>Date of Birth(dd/mm/yyyy):</b></th>
-					<td><input type="date" name="dob"
-					placeholder="dd/mm/yyyy"></td>
+					<td><input type="date" name="dob" placeholder="dd/mm/yyyy"></td>
 					<td>
 						<%
 						if (dob != null) {
@@ -117,10 +113,8 @@
 				</center>
 				</form>
 			</table>
-			<hr>
-			<h2 style="text-align: center;">(c)copyrights SunilOS Infotech
-				Pvt.Ltd.</h2>
 	</form>
+	<%@ include file="Fouter.jsp"%>
 </body>
 </head>
 </html>

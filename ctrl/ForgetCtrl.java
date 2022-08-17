@@ -11,17 +11,15 @@ import javax.servlet.http.HttpServletResponse;
 import com.rays.bean.UserBean;
 import com.rays.model.UserModel;
 
-public class ForgetPasswordCtrl extends HttpServlet {
+
+public class ForgetCtrl extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	protected void doGet(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	}
 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-
+	
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		response.setContentType("text/html");
 
 		String userid = request.getParameter("userid");
@@ -35,6 +33,8 @@ public class ForgetPasswordCtrl extends HttpServlet {
 
 			RequestDispatcher rd = request.getRequestDispatcher("ForgetYourPassword.jsp");
 		
+			request.setAttribute("pass", bean.getPwd());
+			
 			rd.forward(request, response);
 
 		} catch (Exception e) {

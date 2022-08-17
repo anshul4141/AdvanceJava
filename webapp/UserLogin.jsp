@@ -11,27 +11,26 @@
 	<h1 align="center"></h1>
 	<form action="LoginCtrl" method="post">
 		<%
-		String error = (String) request.getAttribute("error");
+		String sMsg = (String) request.getAttribute("sMsg");
 		String userid = (String) request.getAttribute("userid");
 		String pwd = (String) request.getAttribute("pwd");
-		String msg=(String)request.getAttribute("msg");
-		if (error != null) {
+		String msg = (String) request.getAttribute("msg");
+		if (sMsg != null) {
 		%>
 		<center>
-			<font color="Red"> <%=error%></font>
+			<font color="green"> <%=sMsg%></font>
 		</center>
 		<%
-		
 		}
 		%>
 		<center>
-			<font color="green"><h3>Registration Successfully Please login....</h3></font>
-			<%if(msg!=null){
-				
-			%>
-			<font color="red"><h3><%= msg %></h3></font>
 			<%
-			} %>
+			if (msg != null) {
+			%>
+			<font color="red"><h3><%=msg%></h3></font>
+			<%
+			}
+			%>
 
 		</center>
 		<table align="center">

@@ -7,16 +7,9 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<%
-		int i = 0;
-		while (i < 5) {
-	%>
-	<h1><%=i + 1%>
-		Hello While!!
-	</h1>
-	<%
-		i++;
-		}
-	%>
+<center>
+<HR>
+© 2022, Rays Technologies,  SunilOS Infotech Pvt Ltd. 
+</center>
 </body>
 </html>

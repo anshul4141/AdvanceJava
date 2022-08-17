@@ -50,64 +50,115 @@ public class RegistrationCtrl extends HttpServlet {
 		bean.setNumber(number);
 		bean.setDob(dob);
 
-		if (fname.matches(fnamereg) && lname.matches(lnamereg) && userid.matches(emailreg)
-				&& number.matches(numberreg)) {
-			try {
-				model.add(bean);
-			} catch (Exception e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-
-			RequestDispatcher rd = request.getRequestDispatcher("UserLogin.jsp");
-
-			rd.forward(request, response);
-
-		} else if (fname.equals("") && lname.equals("") && userid.equals("") && pwd.equals("") && number.equals("")
+		if (fname.equals("") && lname.equals("") && userid.equals("") && pwd.equals("") && number.equals("")
 				&& dob.equals("")) {
+
 			RequestDispatcher rd = request.getRequestDispatcher("UserRegistration.jsp");
 
-			request.setAttribute("fname", "Please enter your First Name");
-			request.setAttribute("lname", "Please enter your Lname Name");
-			request.setAttribute("userid", "Please enter your emailid Name");
-			request.setAttribute("pwd", "Please enter your Password");
-			request.setAttribute("number", "Please enter your MobileNo.");
-			request.setAttribute("dob", "Dob is required");
+			request.setAttribute("fname", "Enter your First Name");
+			request.setAttribute("lname", "Enter your Last Name ");
+			request.setAttribute("userid", "Enter EmailId");
+			request.setAttribute("pwd", "Enter Password");
+			request.setAttribute("gender", "Select your Gender");
+			request.setAttribute("number", "Enter your Mobile Number ");
+			request.setAttribute("dob", "Enter your dob");
 
 			rd.forward(request, response);
+
 		} else if (fname.equals("")) {
+
 			RequestDispatcher rd = request.getRequestDispatcher("UserRegistration.jsp");
 
 			request.setAttribute("fname", "Please enter your First Name");
+
+			rd.forward(request, response);
+		} else if (!fname.matches(fnamereg)) {
+
+			RequestDispatcher rd = request.getRequestDispatcher("UserRegistration.jsp");
+
+			request.setAttribute("fname", "Please enter name in correct format");
 
 			rd.forward(request, response);
 		} else if (lname.equals("")) {
+
 			RequestDispatcher rd = request.getRequestDispatcher("UserRegistration.jsp");
 
 			request.setAttribute("lname", "Please enter your Last Name");
 
 			rd.forward(request, response);
-		} else if (userid.equals("")) {
+		} else if (!lname.matches(lnamereg)) {
+
 			RequestDispatcher rd = request.getRequestDispatcher("UserRegistration.jsp");
 
-			request.setAttribute("userid", "Please enter your emailId");
+			request.setAttribute("lname", "Please enter your last name in correct format");
+
+			rd.forward(request, response);
+		} else if (userid.equals("")) {
+
+			RequestDispatcher rd = request.getRequestDispatcher("UserRegistration.jsp");
+
+			request.setAttribute("userid", "Please Enter Your EmailId");
+
+			rd.forward(request, response);
+		} else if (!userid.matches(emailreg)) {
+
+			RequestDispatcher rd = request.getRequestDispatcher("UserRegistration.jsp");
+
+			request.setAttribute("userid", "Please enter your Email in correct format");
 
 			rd.forward(request, response);
 		} else if (pwd.equals("")) {
+
 			RequestDispatcher rd = request.getRequestDispatcher("UserRegistration.jsp");
 
 			request.setAttribute("pwd", "Please enter your Password");
 
 			rd.forward(request, response);
-		} else if (number.equals("")) {
+		} else if (!pwd.matches(pwdreg)) {
+
 			RequestDispatcher rd = request.getRequestDispatcher("UserRegistration.jsp");
 
-			request.setAttribute("number", "Please enter your number");
+			request.setAttribute("pwd", "Please enter your Password in correct format");
 
 			rd.forward(request, response);
 
-		}
+		} else if (number.equals("")) {
 
+			RequestDispatcher rd = request.getRequestDispatcher("UserRegistration.jsp");
+
+			request.setAttribute("number", "Please enter your Mobile Number");
+
+			rd.forward(request, response);
+		} else if (!number.matches(numberreg)) {
+
+			RequestDispatcher rd = request.getRequestDispatcher("UserRegistration.jsp");
+
+			request.setAttribute("number", "Please enter your Mobile Number in correct format");
+
+			rd.forward(request, response);
+		} else if (dob.equals("")) {
+
+			RequestDispatcher rd = request.getRequestDispatcher("UserRegistration.jsp");
+
+			request.setAttribute("dob", "Enter Your dob");
+
+			rd.forward(request, response);
+
+		} else {
+
+			try {
+				model.add(bean);
+
+			} catch (Exception e1) {
+
+				e1.printStackTrace();
+			}
+			RequestDispatcher rd = request.getRequestDispatcher("UserLogin.jsp");
+
+			request.setAttribute("sMsg", "Registered Successfully! Please login");
+
+			rd.forward(request, response);
+		}
 	}
 
 }

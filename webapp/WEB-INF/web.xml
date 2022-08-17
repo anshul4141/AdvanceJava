@@ -28,6 +28,12 @@
   	<description></description>
   	<servlet-class>com.rays.ctrl.ForgotPasswordCtrl</servlet-class>
   </servlet>
+  <servlet>
+  	<servlet-name>ForgetCtrl</servlet-name>
+  	<display-name>ForgetCtrl</display-name>
+  	<description></description>
+  	<servlet-class>com.rays.ctrl.ForgetCtrl</servlet-class>
+  </servlet>
   <servlet-mapping>
   	<servlet-name>RegistrationCtrl</servlet-name>
   	<url-pattern>/RegistrationCtrl</url-pattern>
@@ -43,5 +49,9 @@
   <servlet-mapping>
   	<servlet-name>ForgotPasswordCtrl</servlet-name>
   	<url-pattern>/ForgotPasswordCtrl</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>ForgetCtrl</servlet-name>
+  	<url-pattern>/ForgetCtrl</url-pattern>
   </servlet-mapping>
 </web-app>

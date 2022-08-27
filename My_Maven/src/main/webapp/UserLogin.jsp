@@ -8,6 +8,7 @@
 <title>Insert title here</title>
 </head>
 <body>
+	<%@ include file="Headar.jsp"%>
 	<h1 align="center"></h1>
 	<form action="LoginCtrl" method="post">
 		<%
@@ -71,15 +72,16 @@
 					</td>
 				</tr>
 				<tr>
-					<td><input type="submit" name="login" value="log In">
+					<td><input type="submit" name="login" value="Sign In">
 						<input type="reset" name="cancel" value="cancel"></td>
 				</tr>
 				<tr>
-					<td colspan="2" align="center"><a href="UserRegistration.jsp"><b>SignUp</b></a>
-						| <a href="ForgetYourPassword.jsp"><b>Forget my password</b></a>&nbsp;</td>
+					<td colspan="2" align="center"><a href="RegistrationCtrl"><b>SignUp</b></a>
+						| <a href=ForgetCtrl><b>Forget my password</b></a>&nbsp;</td>
 				</tr>
 			</table>
 	</form>
 	<%@ include file="Footer.jsp"%>
 </body>
 </html>
+

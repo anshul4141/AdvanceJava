@@ -19,7 +19,7 @@ public class EchoServer {
 
 			System.out.println("server recieved: " + line);
 
-			out.println(line + "..." + line);
+			out.println(line + ".." + line);
 
 			if (line.equals("stop")) {
 				break;

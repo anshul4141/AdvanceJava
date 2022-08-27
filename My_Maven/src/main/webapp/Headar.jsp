@@ -1,3 +1,4 @@
+<%@page import="com.rays.bean.UserBean"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
@@ -7,34 +8,31 @@
 <title>Insert title here</title>
 </head>
 <body>
+	<img align="right" src="C:\Users\dell\Downloads\rays.png" />
 	<%
-	String myname = (String) request.getAttribute("myname");
-	if (myname != null) {
+	UserBean user = (UserBean) session.getAttribute("user");
+	if (user != null) {
 	%>
-	<h3>
+	<h4>
 		Hello....
-		<%=myname%>
-	</h3>
+		<%=user.getFname()%>
+		<%=user.getLname()%><br> 
+		<a href="LogOut.jsp">LogOut</a> | 
+		<a href="">Home</a> | 
+		<a href="">Training Programs</a> | 
+		<a href="">Enquiry</a>| 
+		<a href="">Tutorials</a> | 
+		<a href="">About Us</a> | 
+		<a href="">Contact Us</a> |
+	</h4>
 	<%
 	} else {
 	%>
 	<h3>Hello Guest..!!</h3>
+	<a href="LoginCtrl">Login</a>
 	<%
 	}
 	%>
-	<div style="text-align: center;">
-		<img align="right" src="C:\Users\dell\Downloads\rays.png" />
-	</div>
-	<a href="LogOut.jsp">LogOut</a> |
-	<a href="">Home</a> |
-	<a href="">Training Programs</a> |
-	<a href="">Enquiry</a> |
-	<a href="">Tutorials</a> |
-	<a href="">About Us</a> |
-	<a href="">Contact Us</a> |
-	<br>
-	<br>
-	<br>
 	<br>
 	<HR>
 </body>

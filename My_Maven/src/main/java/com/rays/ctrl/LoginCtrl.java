@@ -17,6 +17,8 @@ public class LoginCtrl extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		
+		response.sendRedirect("UserLogin.jsp");
 
 	}
 
@@ -84,7 +86,7 @@ public class LoginCtrl extends HttpServlet {
 
 					session.setAttribute("user", bean);
 
-					request.setAttribute("myname", bean.getFname());
+					//request.setAttribute("myname", bean.getFname());
 
 					rd.forward(request, response);
 				} else {

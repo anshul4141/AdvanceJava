@@ -107,8 +107,8 @@
 				<tr>
 					<th></th>
 					<td><input type="submit" name="submit" value="submit">
-						<input type="submit" name="change password"
-						value="change password"></td>
+						<input type="reset" name="reset"
+						value="reset"></td>
 				</tr>
 				</center>
 				</form>

@@ -18,12 +18,14 @@
 			<artifactId>mysql-connector-java</artifactId>
 			<version>8.0.29</version>
 		</dependency>
+
 		<dependency>
 			<groupId>javax.servlet</groupId>
 			<artifactId>javax.servlet-api</artifactId>
 			<version>4.0.1</version>
 			<scope>provided</scope>
 		</dependency>
+
 		<dependency>
 			<groupId>c3p0</groupId>
 			<artifactId>c3p0</artifactId>
@@ -45,7 +47,6 @@
 			<artifactId>javax.mail</artifactId>
 			<version>1.5.1</version>
 		</dependency>
-
 	</dependencies>
 	<properties>
 		<maven.compiler.source>11</maven.compiler.source>

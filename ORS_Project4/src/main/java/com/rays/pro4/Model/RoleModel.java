@@ -10,22 +10,21 @@ import org.apache.log4j.Logger;
 
 import com.rays.pro4.Bean.RoleBean;
 import com.rays.pro4.Exception.ApplicationException;
-import com.rays.pro4.Exception.DataBaseException;
+import com.rays.pro4.Exception.DatabaseException;
 import com.rays.pro4.Exception.DuplicateRecordException;
 import com.rays.pro4.Util.JDBCDataSource;
-
 
 /**
  * JDBC Implementation of Role Model.
  * 
- * @author Anshul Prajapati
+ * @author Sanket jain
  *
  */
 public class RoleModel {
 
 private static Logger log=Logger.getLogger(RoleModel.class);
 	
-	public Integer nextPK()throws DataBaseException{
+	public Integer nextPK()throws DatabaseException{
 		log.debug("Model nextPK Started");
 		Connection conn=null;
 		int pk=0;
@@ -41,7 +40,7 @@ private static Logger log=Logger.getLogger(RoleModel.class);
 			rs.close();
 		}catch(Exception e){
 				log.error("Database Exception..",e);
-				throw new DataBaseException("Exception : Exception in getting PK");
+				throw new DatabaseException("Exception : Exception in getting PK");
 				
 		}finally{
 			JDBCDataSource.closeConnection(conn);

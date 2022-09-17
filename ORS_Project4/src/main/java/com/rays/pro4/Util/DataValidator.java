@@ -1,11 +1,10 @@
 package com.rays.pro4.Util;
 
 import java.util.Date;
-
 /**
  * This class validates input data.
  * 
- * @author Anshul Prajapati
+ * @author Sanket jain
  *
  */
 public class DataValidator {

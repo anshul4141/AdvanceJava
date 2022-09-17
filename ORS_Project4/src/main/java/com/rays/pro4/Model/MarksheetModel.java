@@ -11,23 +11,21 @@ import org.apache.log4j.Logger;
 import com.rays.pro4.Bean.MarksheetBean;
 import com.rays.pro4.Bean.StudentBean;
 import com.rays.pro4.Exception.ApplicationException;
-import com.rays.pro4.Exception.DataBaseException;
+import com.rays.pro4.Exception.DatabaseException;
 import com.rays.pro4.Exception.DuplicateRecordException;
 import com.rays.pro4.Util.JDBCDataSource;
-
-
 
 /**
  * JDBC Implementation of Marksheet Model.
  * 
- * @author Anshul Prajapati
+ * @author Sanket jain
  *
  */
 public class MarksheetModel {
 
 	Logger log = Logger.getLogger(MarksheetModel.class);
 
-	public Integer nextPK() throws DataBaseException {
+	public Integer nextPK() throws DatabaseException {
 		log.debug("Modal nextPK Stsrted");
 		Connection conn = null;
 		int pk = 0;
@@ -44,7 +42,7 @@ public class MarksheetModel {
 			rs.close();
 		} catch (Exception e) {
 			log.error(e);
-			throw new DataBaseException("Exception in Marksheet getting PK");
+			throw new DatabaseException("Exception in Marksheet getting PK");
 
 		} finally {
 			JDBCDataSource.closeConnection(conn);
@@ -53,10 +51,10 @@ public class MarksheetModel {
 		return pk + 1;
 	}
 
-	public long add(MarksheetBean bean) throws Exception {
+	public long add(MarksheetBean bean) throws ApplicationException, DuplicateRecordException {
 
 		StudentModel sModel = new StudentModel();
-		StudentBean studentbean = sModel.findByPK(bean.getStudentId());
+		StudentBean studentbean = sModel.findByPK(bean.getStudentld());
 		String studentname = (studentbean.getFirstName() + "" + studentbean.getLastName());
 
 		log.debug("Model add Started");
@@ -77,7 +75,7 @@ public class MarksheetModel {
 
 			pstmt.setInt(1, pk);
 			pstmt.setString(2, bean.getRollNo());
-			pstmt.setLong(3, bean.getStudentId());
+			pstmt.setLong(3, bean.getStudentld());
 			pstmt.setString(4, studentname);
 			pstmt.setInt(5, bean.getPhysics());
 			pstmt.setInt(6, bean.getChemistry());
@@ -151,7 +149,7 @@ public class MarksheetModel {
 				bean = new MarksheetBean();
 				bean.setId(rs.getLong(1));
 				bean.setRollNo(rs.getString(2));
-				bean.setStudentId(rs.getLong(3));
+				bean.setStudentld(rs.getLong(3));
 				bean.setName(rs.getString(4));
 				// System.out.println(bean.getName());
 				bean.setPhysics(rs.getInt(5));
@@ -191,7 +189,7 @@ public class MarksheetModel {
 				bean = new MarksheetBean();
 				bean.setId(rs.getLong(1));
 				bean.setRollNo(rs.getString(2));
-				bean.setStudentId(rs.getLong(3));
+				bean.setStudentld(rs.getLong(3));
 				bean.setName(rs.getString(4));
 				bean.setPhysics(rs.getInt(5));
 				bean.setChemistry(rs.getInt(6));
@@ -212,7 +210,7 @@ public class MarksheetModel {
 		return bean;
 	}
 
-	public void update(MarksheetBean bean) throws Exception {
+	public void update(MarksheetBean bean) throws ApplicationException, DuplicateRecordException {
 
 		log.debug("Model update Started");
 
@@ -226,7 +224,7 @@ public class MarksheetModel {
 
 		// get Student Name
 		StudentModel sModel = new StudentModel();
-		StudentBean studentbean = sModel.findByPK(bean.getStudentId());
+		StudentBean studentbean = sModel.findByPK(bean.getStudentld());
 		bean.setName(studentbean.getFirstName() + " " + studentbean.getLastName());
 
 		try {
@@ -235,7 +233,7 @@ public class MarksheetModel {
 			PreparedStatement pstmt = conn.prepareStatement(
 					"UPDATE ST_MARKSHEET SET ROLL_NO=?,STUDENT_ID=?,NAME=?,PHYSICS=?,CHEMISTRY=?,MATHS=?,CREATED_BY=?,MODIFIED_BY=?,CREATED_DATETIME=?,MODIFIED_DATETIME=? WHERE ID=?");
 			pstmt.setString(1, bean.getRollNo());
-			pstmt.setLong(2, bean.getStudentId());
+			pstmt.setLong(2, bean.getStudentld());
 			pstmt.setString(3, bean.getName());
 			pstmt.setInt(4, bean.getPhysics());
 			pstmt.setInt(5, bean.getChemistry());
@@ -313,7 +311,7 @@ public class MarksheetModel {
 				bean = new MarksheetBean();
 				bean.setId(rs.getLong(1));
 				bean.setRollNo(rs.getString(2));
-				bean.setStudentId(rs.getLong(3));
+				bean.setStudentld(rs.getLong(3));
 				bean.setName(rs.getString(4));
 				bean.setPhysics(rs.getInt(5));
 				bean.setChemistry(rs.getInt(6));
@@ -359,7 +357,7 @@ public class MarksheetModel {
 				MarksheetBean bean = new MarksheetBean();
 				bean.setId(rs.getLong(1));
 				bean.setRollNo(rs.getString(2));
-				bean.setStudentId(rs.getLong(3));
+				bean.setStudentld(rs.getLong(3));
 				bean.setName(rs.getString(4));
 				bean.setPhysics(rs.getInt(5));
 				bean.setChemistry(rs.getInt(6));

@@ -205,9 +205,6 @@ public class UserRegistrationCtl extends BaseCtl {
 				ServletUtility.setBean(bean, request);
 				ServletUtility.setErrorMessage("Login Id Already Exists", request);
 				ServletUtility.forward(getView(), request, response);
-			} catch (Exception e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
 			}
 		} else if (OP_RESET.equalsIgnoreCase(op)) {
 			ServletUtility.redirect(ORSView.USER_REGISTRATION_CTL, request, response);

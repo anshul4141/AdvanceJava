@@ -12,7 +12,7 @@
 <body>
 	<form action="">
 		<center>
-			<table>
+			<table border="10px">
 				<tr>
 					<td>id</td>
 					<td>rollNo</td>

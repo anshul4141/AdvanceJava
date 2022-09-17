@@ -1,11 +1,10 @@
 package com.rays.pro4.Util;
 
 import java.util.HashMap;
-
 /**
  *  Class that build Application Email messages.
  *  
- * @author Anshul Prajapati
+ * @author Sanket jain
  *
  */
 public class EmailBuilder {

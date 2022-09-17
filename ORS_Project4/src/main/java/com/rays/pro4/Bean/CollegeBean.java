@@ -1,75 +1,59 @@
 package com.rays.pro4.Bean;
 
-
-public class CollegeBean extends BaseBean {
+/**
+ * College JavaBean encapsulates College attributes.
+ * @author Sanket jain
+ *
+ */
+public class CollegeBean extends BaseBean{
 
 	private String name;
 	private String address;
 	private String state;
 	private String city;
 	private String phoneNo;
-
-	public CollegeBean() {
-		// TODO Auto-generated constructor stub
-	}
-
+	
+	
+	
 	public String getName() {
 		return name;
 	}
-
 	public void setName(String name) {
 		this.name = name;
 	}
-
 	public String getAddress() {
 		return address;
 	}
-
 	public void setAddress(String address) {
 		this.address = address;
 	}
-
 	public String getState() {
 		return state;
 	}
-
 	public void setState(String state) {
 		this.state = state;
 	}
-
 	public String getCity() {
 		return city;
 	}
-
 	public void setCity(String city) {
 		this.city = city;
 	}
-
 	public String getPhoneNo() {
 		return phoneNo;
 	}
-
 	public void setPhoneNo(String phoneNo) {
 		this.phoneNo = phoneNo;
 	}
-
 	@Override
-	public String getKey() {
+	public String getkey() {
 		// TODO Auto-generated method stub
-		return null;
+		return id+" ";
 	}
-
 	@Override
 	public String getValue() {
 		// TODO Auto-generated method stub
-		return null;
+		return name;
 	}
-
-	@Override
-	public int compareTo(BaseBean o) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
 	
 }

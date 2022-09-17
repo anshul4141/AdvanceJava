@@ -11,16 +11,14 @@ import org.apache.log4j.Logger;
 import com.rays.pro4.Bean.CourseBean;
 import com.rays.pro4.Bean.SubjectBean;
 import com.rays.pro4.Exception.ApplicationException;
-import com.rays.pro4.Exception.DataBaseException;
+import com.rays.pro4.Exception.DatabaseException;
 import com.rays.pro4.Exception.DuplicateRecordException;
 import com.rays.pro4.Util.JDBCDataSource;
-
-
 
 /**
  * JDBC Implementation of Subject Model.
  * 
- * @author Anshul Prajapati
+ * @author Sanket jain
  *
  */
 public class SubjectModel {
@@ -29,7 +27,7 @@ public class SubjectModel {
 	private static Logger log= Logger.getLogger(SubjectModel.class);
 	
 	
-	private Integer nextPK() throws DataBaseException {
+	private Integer nextPK() throws DatabaseException {
 		   log.debug("Model nextpk Started");
 		   Connection conn=null;
 		   int pk=0;
@@ -44,7 +42,7 @@ public class SubjectModel {
 		   rs.close();
 		   }  catch(Exception e) {
 			   log.error("Database Exception..",e);
-			   throw new DataBaseException("Exception : Exception in getting pk");
+			   throw new DatabaseException("Exception : Exception in getting pk");
 			   
 		   }finally {
 			   JDBCDataSource.closeConnection(conn);
@@ -255,10 +253,10 @@ public class SubjectModel {
 	 
 	 
 	 
-	 public List search( SubjectBean bean) throws DataBaseException, ApplicationException {
+	 public List search( SubjectBean bean) throws DatabaseException, ApplicationException {
 		 return search(bean,0,0);
 	 }
-	 public List search(SubjectBean bean,int pageNo,int pageSize) throws DataBaseException, ApplicationException {
+	 public List search(SubjectBean bean,int pageNo,int pageSize) throws DatabaseException, ApplicationException {
 		 log.debug("Model search Started");
 		 StringBuffer sql= new StringBuffer("Select * from ST_SUBJECT where true");
 		 if(bean !=null) {

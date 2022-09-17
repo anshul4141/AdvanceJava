@@ -6,7 +6,7 @@
 <meta charset="ISO-8859-1">
 <title>Insert title here</title>
 </head>
-<body>
+<body bgcolor="10D7CAF">
 	<%@ include file="Headar.jsp"%>
 	<center>
 		<h1>

@@ -13,22 +13,21 @@ import com.rays.pro4.Bean.CourseBean;
 import com.rays.pro4.Bean.FacultyBean;
 import com.rays.pro4.Bean.SubjectBean;
 import com.rays.pro4.Exception.ApplicationException;
-import com.rays.pro4.Exception.DataBaseException;
+import com.rays.pro4.Exception.DatabaseException;
 import com.rays.pro4.Exception.DuplicateRecordException;
 import com.rays.pro4.Util.JDBCDataSource;
-
 
 /**
  * JDBC Implementation of FacultyModel.
  * 
- * @author Anshul Prajapati
+ * @author Sanket jain
  *
  */
 public class FacultyModel {
 
 	private static Logger log = Logger.getLogger(FacultyModel.class);
 
-	private Integer nextPK() throws DataBaseException {
+	private Integer nextPK() throws DatabaseException {
 		log.debug("Model nextpk Started");
 		Connection conn = null;
 		int pk = 0;
@@ -43,7 +42,7 @@ public class FacultyModel {
 			rs.close();
 		} catch (Exception e) {
 			log.error("Database Exception..", e);
-			throw new DataBaseException("Exception : Exception in getting pk");
+			throw new DatabaseException("Exception : Exception in getting pk");
 
 		} finally {
 			JDBCDataSource.closeConnection(conn);
@@ -58,7 +57,7 @@ public class FacultyModel {
 		   int pk=0;
 		   
 		   
-		    CollegeModel collegeModel = new CollegeModel();	
+		   CollegeModel collegeModel = new CollegeModel();	
 			CollegeBean collegeBean = collegeModel.findByPK(bean.getCollegeId());
 			bean.setCollegeName(collegeBean.getName());
 			
@@ -87,30 +86,28 @@ public class FacultyModel {
 			   pk=nextPK();
 			   conn.setAutoCommit(false);
 			   System.out.println("666666666666");
-			   PreparedStatement pstmt = conn.prepareStatement("INSERT INTO ST_FACULTY VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
+			   PreparedStatement pstmt = conn.prepareStatement("INSERT INTO ST_FACULTY VALUE (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
 			   	pstmt.setInt(1, pk);
 			   	pstmt.setString(2, bean.getFirstName());
 			    pstmt.setString(3, bean.getLastName());
-			    pstmt.setString(4, bean.getEmailId());
-			    pstmt.setString(5, bean.getMobileNo());
-			    pstmt.setLong(6, bean.getCollegeId());
-			    pstmt.setString(7, bean.getCollegeName());
-			    pstmt.setLong(8, bean.getCourseId());
-			    pstmt.setString(9, bean.getCourseName());
-			    pstmt.setDate(10, new java.sql.Date(bean.getDob().getTime()));
-			    pstmt.setLong(11,bean.getSubjectId());
-			    pstmt.setString(12, bean.getSubjectName());
-			    pstmt.setString(13, bean.getCreatedBy());
-			    pstmt.setString(14, bean.getModifiedBy());
-			    pstmt.setTimestamp(15, bean.getCreatedDatetime());
-			   pstmt.setTimestamp(16, bean.getModifiedDatetime());
-			   pstmt.executeUpdate();
-			   
+			    pstmt.setString(4, bean.getGender());
+			    pstmt.setString(5, bean.getEmailId());
+			    pstmt.setString(6, bean.getMobileNo());
+			    pstmt.setLong(7, bean.getCollegeId());
+			    pstmt.setString(8, bean.getCollegeName());
+			    pstmt.setLong(9, bean.getCourseId());
+			    pstmt.setString(10, bean.getCourseName());
+			    pstmt.setDate(11, new java.sql.Date(bean.getDob().getTime()));
+			    pstmt.setLong(12,bean.getSubjectId());
+			    pstmt.setString(13, bean.getSubjectName());
+			    pstmt.setString(14, bean.getCreatedBy());
+			    pstmt.setString(15, bean.getModifiedBy());
+			    pstmt.setTimestamp(16, bean.getCreatedDatetime());
+			    pstmt.setTimestamp(17, bean.getModifiedDatetime());
+			   	pstmt.executeUpdate();
 			   	conn.commit();
 			   	pstmt.close();
 			   	conn.close();
-			   	System.out.println("Inserted...");
-			   	
 		   }catch(Exception e) {
 		//	   log.error("Database Exception....",e);
 			   try {

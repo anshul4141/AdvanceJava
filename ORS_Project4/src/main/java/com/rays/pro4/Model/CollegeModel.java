@@ -10,17 +10,21 @@ import org.apache.log4j.Logger;
 
 import com.rays.pro4.Bean.CollegeBean;
 import com.rays.pro4.Exception.ApplicationException;
-import com.rays.pro4.Exception.DataBaseException;
+import com.rays.pro4.Exception.DatabaseException;
 import com.rays.pro4.Exception.DuplicateRecordException;
 import com.rays.pro4.Util.JDBCDataSource;
 
-
-
+/**
+ * JDBC Implementation of CollegeModel.
+ * 
+ * @author Sanket jain
+ *
+ */
 public class CollegeModel {
 
 	private static Logger log = Logger.getLogger(CollegeModel.class);
 
-	public Integer nextPK() throws DataBaseException {
+	public Integer nextPK() throws DatabaseException {
 		log.debug("Modal nextPK Started");
 		Connection conn = null;
 		int pk = 0;
@@ -34,7 +38,7 @@ public class CollegeModel {
 			rs.close();
 		} catch (Exception e) {
 			log.error("Database Exception", e);
-			throw new DataBaseException("Exceptio :Exception in getting PK");
+			throw new DatabaseException("Exceptio :Exception in getting PK");
 
 		} finally {
 			JDBCDataSource.closeConnection(conn);
@@ -347,4 +351,3 @@ public class CollegeModel {
 
 	}
 }
-

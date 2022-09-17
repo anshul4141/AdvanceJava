@@ -11,17 +11,17 @@
 </head>
 <body>
 	<form>
-
 		<br> <br> <br>
 		<center>
-			<table border="6px"
-				style="box-shadow: 3px 3px 5px black; color: cyan">
-				<tr style="color: black">
-					<td>id</td>
-					<td>rollNo</td>
-					<td>fname</td>
-					<td>lname</td>
-					<td>session</td>
+			<table border="1" width="100%" align="center" cellpadding=8px
+				cellspacing=".2">
+
+				<tr style="background: skyblue">
+					<th>id</th>
+					<th>rollNo</th>
+					<th>fname</th>
+					<th>lname</th>
+					<th>session</th>
 				</tr>
 
 				<%
@@ -30,7 +30,7 @@
 				while (it.hasNext()) {
 					StudentBean bean = it.next();
 				%>
-				<tr style="color: red">
+				<tr>
 					<td><%=bean.getId()%></td>
 					<td><%=bean.getRollNo()%></td>
 					<td><%=bean.getFname()%></td>

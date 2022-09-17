@@ -138,7 +138,7 @@ public class MarksheetCtl extends BaseCtl{
 		bean.setPhysics(DataUtility.getInt(request.getParameter("physics")));
 		bean.setChemistry(DataUtility.getInt(request.getParameter("chemistry")));
 		bean.setMaths(DataUtility.getInt(request.getParameter("maths")));
-		bean.setStudentId(DataUtility.getLong(request.getParameter("studentld")));
+		bean.setStudentld(DataUtility.getLong(request.getParameter("studentld")));
 		
 	//	System.out.println(">>>>>>>>>>>>>" +request.getParameter("studentId"));
 
@@ -222,9 +222,6 @@ public class MarksheetCtl extends BaseCtl{
 			} catch (DuplicateRecordException e) {
 				ServletUtility.setBean(bean, request);
 				ServletUtility.setErrorMessage("Roll no already exists", request);
-			} catch (Exception e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
 			}
 
 		} else if (OP_RESET.equalsIgnoreCase(op)) {

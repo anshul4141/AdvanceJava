@@ -1,3 +1,4 @@
+
 package com.rays.pro4.Util;
 
 import java.io.IOException;
@@ -14,13 +15,12 @@ import com.rays.pro4.Model.BaseModel;
 import com.rays.pro4.controller.BaseCtl;
 import com.rays.pro4.controller.ORSView;
 
-
 /**
  * This class provides utility operation for Servlet container like forward,
  * redirect, handle generic exception, manage success and error message, manage
  * default Bean and List, manage pagination parameters.
  * 
- * @author Anshul Prajapati
+ * @author Sanket jain
  *
  */
 public class ServletUtility {

@@ -9,7 +9,7 @@
 <body>
 	<form action="Marksheetctl" method="post">
 		<center>
-			<table>
+			<table >
 				<th>Search Merit list</th>
 				<tr>
 					<td><input type="submit" value="search" name="operation"></td>

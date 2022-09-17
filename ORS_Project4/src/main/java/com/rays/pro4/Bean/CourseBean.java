@@ -1,45 +1,41 @@
 package com.rays.pro4.Bean;
 
-public class CourseBean extends BaseBean {
+/**
+ * Course JavaBean encapsulates Course attributes.
+ * 
+ * @author Sanket jain
+ *
+ */
+public class CourseBean extends BaseBean{
 
-	private String name;
+	private String name ;
 	private String description;
 	private String duration;
-
 	public String getName() {
 		return name;
 	}
-
 	public void setName(String name) {
 		this.name = name;
 	}
-
 	public String getDescription() {
 		return description;
 	}
-
 	public void setDescription(String description) {
 		this.description = description;
 	}
-
 	public String getDuration() {
 		return duration;
 	}
-
 	public void setDuration(String duration) {
 		this.duration = duration;
-
 	}
-
 	@Override
-	public String getKey() {
-		// TODO Auto-generated method stub
-		return id + "";
+	public String getkey() {
+		return id+"";
 	}
-
-	@Override
 	public String getValue() {
-		// TODO Auto-generated method stub
 		return name;
 	}
+	
+	
 }

@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<body bgcolor="7D7CAF">
+<body bgcolor="10D7CAF">
 	<%@ include file="Headar.jsp"%>
 	<title>My profile</title>
 	<h1 style="text-align: center;">Please Registar here...</h1>
@@ -68,7 +68,7 @@
 					</td>
 				</tr>
 				<tr>
-					<th>Gender:</th>
+					<th>Gender*:</th>
 					<td><label for="gender" style="text-align: center;"></label> <input
 						type="radio" name="gender" value=" male" selected>Male <input
 						type="radio" name="gender" value="female" selected>Female
@@ -82,7 +82,7 @@
 					</td>
 				</tr>
 				<tr>
-					<th><b>Mobile No.:</b></th>
+					<th><b>Mobile No*.:</b></th>
 					<td><input type="number" name="number" value=""
 						placeholder="mob"></td>
 					<td>
@@ -94,7 +94,7 @@
 					</td>
 				</tr>
 				<tr>
-					<th><b>Date of Birth(dd/mm/yyyy):</b></th>
+					<th><b>Date of Birth*:</b></th>
 					<td><input type="date" name="dob" placeholder="dd/mm/yyyy"></td>
 					<td>
 						<%

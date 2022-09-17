@@ -16,20 +16,18 @@
 	<h4>
 		Hello....
 		<%=user.getFname()%>
-		<%=user.getLname()%><br> 
-		<a href="LogOut.jsp">LogOut</a> | 
-		<a href="">Home</a> | 
-		<a href="">Training Programs</a> | 
-		<a href="">Enquiry</a>| 
-		<a href="">Tutorials</a> | 
-		<a href="">About Us</a> | 
-		<a href="">Contact Us</a> |
+		<%=user.getLname()%><br> <a href="LogOut.jsp">LogOut</a> | <a
+			href="">Home</a> | <a href="StudentCtrl">GetStudent</a> | <a href="">Marksheet</a>
+		| <a href="">Tutorials</a> | <a href="">About Us</a> | <a href="">Contact
+			Us</a> |
 	</h4>
 	<%
 	} else {
 	%>
-	<h3>Hello Guest..!!</h3>
+	<a href="WelcomCtrl">Welcome</a>
 	<a href="LoginCtrl">Login</a>
+
+	<h3>Hello Guest..!!</h3>
 	<%
 	}
 	%>

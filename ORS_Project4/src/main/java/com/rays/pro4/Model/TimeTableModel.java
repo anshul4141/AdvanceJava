@@ -13,23 +13,21 @@ import com.rays.pro4.Bean.CourseBean;
 import com.rays.pro4.Bean.SubjectBean;
 import com.rays.pro4.Bean.TimeTableBean;
 import com.rays.pro4.Exception.ApplicationException;
-import com.rays.pro4.Exception.DataBaseException;
+import com.rays.pro4.Exception.DatabaseException;
 import com.rays.pro4.Exception.DuplicateRecordException;
 import com.rays.pro4.Util.JDBCDataSource;
-
-
 
 /**
  * The Class TimeTableModel.
  * 
- * @author Anshul Prajapati
+ * @author Sanket jain
  *
  */
 public class TimeTableModel {
 
 	private static Logger log = Logger.getLogger(TimeTableModel.class);
 
-	public Integer nextPK() throws DataBaseException {
+	public Integer nextPK() throws DatabaseException {
 		log.debug("Model nextPK Started");
 		Connection conn = null;
 		int pk = 0;
@@ -44,7 +42,7 @@ public class TimeTableModel {
 
 		} catch (Exception e) {
 			log.error("Database Exception..", e);
-			throw new DataBaseException("Exception : Exception in getting PK");
+			throw new DatabaseException("Exception : Exception in getting PK");
 		} finally {
 			JDBCDataSource.closeConnection(conn);
 		}
@@ -79,7 +77,7 @@ public class TimeTableModel {
 			conn = JDBCDataSource.getConnection();
 			pk = nextPK();
 			conn.setAutoCommit(false);
-			PreparedStatement pstmt = conn.prepareStatement("insert into st_timetable values(?,?,?,?,?,?,?,?,?,?,?,?)");
+			PreparedStatement pstmt = conn.prepareStatement("INSERT st_timetable values(?,?,?,?,?,?,?,?,?,?,?,?)");
 			pstmt.setInt(1, pk);
 			pstmt.setLong(2, bean.getCourseId());
 			pstmt.setString(3, bean.getCourseName());

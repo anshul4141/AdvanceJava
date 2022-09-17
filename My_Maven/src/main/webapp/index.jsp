@@ -8,7 +8,7 @@
 </head>
 <body>
 	<center>
-		<a href="UserLogin.jsp">
+		<a href="WelcomCtrl">
 			<font color="Blue"><h1>Click here to enter WebApp</h1></font>
 		</a>
 	</center>

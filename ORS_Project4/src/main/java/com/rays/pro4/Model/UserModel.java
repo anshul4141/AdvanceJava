@@ -10,31 +10,29 @@ import java.util.List;
 
 import org.apache.log4j.Logger;
 
+//import org.apache.log4j.Logger;
+
 import com.rays.pro4.Bean.UserBean;
 import com.rays.pro4.Exception.ApplicationException;
-import com.rays.pro4.Exception.DataBaseException;
+import com.rays.pro4.Exception.DatabaseException;
 import com.rays.pro4.Exception.DuplicateRecordException;
-import com.rays.pro4.Exception.RecordNotFountException;
+import com.rays.pro4.Exception.RecordNotFoundException;
 import com.rays.pro4.Util.EmailBuilder;
 import com.rays.pro4.Util.EmailMessage;
 import com.rays.pro4.Util.EmailUtility;
 import com.rays.pro4.Util.JDBCDataSource;
 
-//import org.apache.log4j.Logger;
-
-
-
 /**
  * JDBC Implementation of UserModel.
  * 
- * @author Anshul prajapati
+ * @author Sanket jain
  *
  */
 
 public class UserModel {
 	private static Logger log = Logger.getLogger(UserModel.class);
 
-	public int nextPK() throws DataBaseException {
+	public int nextPK() throws DatabaseException {
 
 		log.debug("Model nextPK Started");
 
@@ -51,7 +49,7 @@ public class UserModel {
 			rs.close();
 		} catch (Exception e) {
 
-			throw new DataBaseException("Exception : Exception in getting PK");
+			throw new DatabaseException("Exception : Exception in getting PK");
 		} finally {
 			JDBCDataSource.closeConnection(conn);
 		}
@@ -94,8 +92,8 @@ public class UserModel {
 			pstmt.setString(10, bean.getGender());
 			pstmt.setTimestamp(11, bean.getLastLogin());
 			pstmt.setString(12, bean.getLock());
-			pstmt.setString(13, bean.getRegisteredIp());
-			pstmt.setString(14, bean.getLastLoginIp());
+			pstmt.setString(13, bean.getRegisterdIP());
+			pstmt.setString(14, bean.getLastLoginIP());
 			pstmt.setString(15, bean.getCreatedBy());
 			pstmt.setString(16, bean.getModifiedBy());
 			pstmt.setTimestamp(17, bean.getCreatedDatetime());
@@ -176,8 +174,8 @@ public class UserModel {
 				bean.setGender(rs.getString(10));
 				bean.setLastLogin(rs.getTimestamp(11));
 				bean.setLock(rs.getString(12));
-				bean.setRegisteredIp(rs.getString(13));
-				bean.setLastLoginIp(rs.getString(14));
+				bean.setRegisterdIP(rs.getString(13));
+				bean.setLastLoginIP(rs.getString(14));
 				bean.setCreatedBy(rs.getString(15));
 				bean.setModifiedBy(rs.getString(16));
 				bean.setCreatedDatetime(rs.getTimestamp(17));
@@ -220,8 +218,8 @@ public class UserModel {
 				bean.setGender(rs.getString(10));
 				bean.setLastLogin(rs.getTimestamp(11));
 				bean.setLock(rs.getString(12));
-				bean.setRegisteredIp(rs.getString(13));
-				bean.setLastLoginIp(rs.getString(14));
+				bean.setRegisterdIP(rs.getString(13));
+				bean.setLastLoginIP(rs.getString(14));
 				bean.setCreatedBy(rs.getString(15));
 				bean.setModifiedBy(rs.getString(16));
 				bean.setCreatedDatetime(rs.getTimestamp(17));
@@ -242,7 +240,7 @@ public class UserModel {
 
 	public void update(UserBean bean) throws ApplicationException, DuplicateRecordException {
 		log.debug("Model Update Start");
-		String sql = "UPDATE ST_USER SET FIRST_NAME=?,LAST_NAME=?,LOGIN=?,PASSWORD=?,DOB=?,MOBILE_NO=?,ROLE_ID=?,GENDER=?,LAST_LOGIN=?,USER_LOCK=?,REGISTERED_IP=?,LAST_LOGIN_IP=?,CREATED_BY=?,MODIFIED_BY=?,CREATED_DATETIME=?,MODIFIED_DATETIME=?  WHERE ID=?";
+		String sql = "UPDATE ST_USER SET FIRST_NAME=?,LAST_NAME=?,LOGIN=?,PASSWORD=?,DOB=?,MOBILE_NO=?,ROLE_ID=?,UNSUCCESSEFUL_LOGIN=?,GENDER=?,LAST_LOGIN=?,USER_LOCK=?,REGISTERED_IP=?,LAST_LOGIN_IP=?,CREATED_BY=?,MODIFIED_BY=?,CREATED_DATETIME=?,MODIFIED_DATETIME=?  WHERE ID=?";
 		Connection conn = null;
 		UserBean existBean = findByLogin(bean.getLogin());
 		if (existBean != null && !(existBean.getId() == bean.getId())) {
@@ -259,17 +257,17 @@ public class UserModel {
 			pstmt.setDate(5, new java.sql.Date(bean.getDob().getTime()));
 			pstmt.setString(6, bean.getMobileNo());
 			pstmt.setLong(7, bean.getRoleId());
-//			pstmt.setInt(8, bean.getUnSuccessfulLogin());
-			pstmt.setString(8, bean.getGender());
-			pstmt.setTimestamp(9, bean.getLastLogin());
-			pstmt.setString(10, bean.getLock());
-			pstmt.setString(11, bean.getRegisteredIp());
-			pstmt.setString(12, bean.getLastLoginIp());
-			pstmt.setString(13, bean.getCreatedBy());
-			pstmt.setString(14, bean.getModifiedBy());
-			pstmt.setTimestamp(15, bean.getModifiedDatetime());
+			pstmt.setInt(8, bean.getUnSuccessfulLogin());
+			pstmt.setString(9, bean.getGender());
+			pstmt.setTimestamp(10, bean.getLastLogin());
+			pstmt.setString(11, bean.getLock());
+			pstmt.setString(12, bean.getRegisterdIP());
+			pstmt.setString(13, bean.getLastLoginIP());
+			pstmt.setString(14, bean.getCreatedBy());
+			pstmt.setString(15, bean.getModifiedBy());
 			pstmt.setTimestamp(16, bean.getModifiedDatetime());
-			pstmt.setLong(17, bean.getId());
+			pstmt.setTimestamp(17, bean.getModifiedDatetime());
+			pstmt.setLong(18, bean.getId());
 			pstmt.executeUpdate();
 			conn.commit();
 			pstmt.close();
@@ -356,8 +354,8 @@ public class UserModel {
 				bean.setGender(rs.getString(10));
 				bean.setLastLogin(rs.getTimestamp(11));
 				bean.setLock(rs.getString(12));
-				bean.setRegisteredIp(rs.getString(13));
-				bean.setLastLoginIp(rs.getString(14));
+				bean.setRegisterdIP(rs.getString(13));
+				bean.setLastLoginIP(rs.getString(14));
 				bean.setCreatedBy(rs.getString(15));
 				bean.setModifiedBy(rs.getString(16));
 				bean.setCreatedDatetime(rs.getTimestamp(17));
@@ -401,8 +399,8 @@ public class UserModel {
 				bean.setGender(rs.getString(10));
 				bean.setLastLogin(rs.getTimestamp(11));
 				bean.setLock(rs.getString(12));
-				bean.setRegisteredIp(rs.getString(13));
-				bean.setLastLoginIp(rs.getString(14));
+				bean.setRegisterdIP(rs.getString(13));
+				bean.setLastLoginIP(rs.getString(14));
 				bean.setCreatedBy(rs.getString(15));
 				bean.setModifiedBy(rs.getString(16));
 				bean.setCreatedDatetime(rs.getTimestamp(17));
@@ -448,8 +446,8 @@ public class UserModel {
 				bean.setGender(rs.getString(10));
 				bean.setLastLogin(rs.getTimestamp(11));
 				bean.setLock(rs.getString(12));
-				bean.setRegisteredIp(rs.getString(13));
-				bean.setLastLoginIp(rs.getString(14));
+				bean.setRegisterdIP(rs.getString(13));
+				bean.setLastLoginIP(rs.getString(14));
 				bean.setCreatedBy(rs.getString(15));
 				bean.setModifiedBy(rs.getString(16));
 				bean.setCreatedDatetime(rs.getTimestamp(17));
@@ -502,8 +500,8 @@ public class UserModel {
 				bean.setGender(rs.getString(10));
 				bean.setLastLogin(rs.getTimestamp(11));
 				bean.setLock(rs.getString(12));
-				bean.setRegisteredIp(rs.getString(13));
-				bean.setLastLoginIp(rs.getString(14));
+				bean.setRegisterdIP(rs.getString(13));
+				bean.setLastLoginIP(rs.getString(14));
 				bean.setCreatedBy(rs.getString(15));
 				bean.setModifiedBy(rs.getString(16));
 				bean.setCreatedDatetime(rs.getTimestamp(17));
@@ -524,7 +522,7 @@ public class UserModel {
 	}
 
 	public boolean changePassword(Long id, String oldPassword, String newPassword)
-			throws Exception {
+			throws ApplicationException, RecordNotFoundException {
 
 		log.debug("Model chanfwPassword Started");
 		boolean flag = false;
@@ -543,7 +541,7 @@ public class UserModel {
 			}
 			flag = true;
 		} else {
-			throw new RecordNotFountException("Login not exist");
+			throw new RecordNotFoundException("Login not exist");
 		}
 
 		HashMap<String, String> map = new HashMap<String, String>();
@@ -566,7 +564,7 @@ public class UserModel {
 		return flag;
 	}
 
-	public long registerUser(UserBean bean) throws Exception {
+	public long registerUser(UserBean bean) throws ApplicationException, DuplicateRecordException {
 		log.debug("Model add Started");
 		long pk = add(bean);
 
@@ -586,12 +584,12 @@ public class UserModel {
 		return pk;
 	}
 
-	public boolean forgetPassword(String login) throws Exception {
+	public boolean forgetPassword(String login) throws ApplicationException, RecordNotFoundException {
 		UserBean userData = findByLogin(login);
 		boolean flag = false;
 
 		if (userData == null) {
-			throw new RecordNotFountException("Email Id does not exist !");
+			throw new RecordNotFoundException("Email Id does not exist !");
 		}
 
 		HashMap<String, String> map = new HashMap<String, String>();

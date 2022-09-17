@@ -1,9 +1,10 @@
+
 package com.rays.pro4.Util;
 
 /**
  * Contains Email Message.
  * 
- * @author Anshul Prajapati
+ * @author Sanket jain
  *
  */
 

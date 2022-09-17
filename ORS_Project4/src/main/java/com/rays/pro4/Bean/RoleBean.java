@@ -1,18 +1,22 @@
 package com.rays.pro4.Bean;
 
-public class RoleBean extends BaseBean {
-	
+/**
+ * Role JavaBean encapsulates Role attributes.
+ * 
+ * @author Sanket jain
+ *
+ */
+public class RoleBean extends BaseBean{
+
 	public static final int ADMIN = 1;
 	public static final int STUDENT = 2;
 	public static final int COLLEGE = 3;
-	public static final int KIOSK = 4;
-	public static final int FACULTY = 5;
+	public static final int FACULTY = 4;
+	public static final int KIOSK = 5;
+
 	private String name;
+
 	private String description;
-	
-	public RoleBean() {
-		// TODO Auto-generated constructor stub
-	}
 
 	public String getName() {
 		return name;
@@ -31,15 +35,16 @@ public class RoleBean extends BaseBean {
 	}
 
 	@Override
-	public String getKey() {
+	public String getkey() {
 		// TODO Auto-generated method stub
-		return null;
+		return id+" ";
 	}
 
 	@Override
 	public String getValue() {
 		// TODO Auto-generated method stub
-		return null;
+		return name;
 	}
-
+	
+	
 }

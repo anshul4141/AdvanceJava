@@ -22,7 +22,7 @@ public class MarksheetModel {
 				rb.getString("password"));
 
 		PreparedStatement ps = conn.prepareStatement(
-				" select * ,(phy+chm+math) as total, (phy+chm+math)/3 as percentage from marksheet where phy between 40 and 100 and chm between 40 and 100 and math between 40 and 100 order by total desc limit 0,5");
+				" select * ,(phy+chm+math) as total from marksheet where phy between 40 and 100 and chm between 40 and 100 and math between 40 and 100 order by total desc limit 0,5");
 
 		ResultSet rs = ps.executeQuery();
 

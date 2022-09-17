@@ -7,12 +7,12 @@ import java.util.Date;
 /**
  * Data Utility class to format data from one format to another
  * 
- * @author Anshul Prajapati 
+ * @author Sanket jain 
  *
  */
 
 public class DataUtility {
-	
+
 	/**
 	 * Application Date Format
 	 */
@@ -173,6 +173,5 @@ public class DataUtility {
 	public static void main(String[] args) {
 		System.out.println(getInt("124"));
 	}
-
 
 }

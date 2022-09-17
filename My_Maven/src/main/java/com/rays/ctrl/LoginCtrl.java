@@ -55,7 +55,7 @@ public class LoginCtrl extends HttpServlet {
 
 			RequestDispatcher rd = request.getRequestDispatcher("UserLogin.jsp");
 
-			request.setAttribute("userid", "enter currect email id");
+			request.setAttribute("userid", "enter correct email id");
 
 			rd.forward(request, response);
 		} else if (pwd.equals("")) {
@@ -69,7 +69,7 @@ public class LoginCtrl extends HttpServlet {
 
 			RequestDispatcher rd = request.getRequestDispatcher("UserLogin.jsp");
 
-			request.setAttribute("pwd", "enter currect password ");
+			request.setAttribute("pwd", "enter correct password ");
 
 			rd.forward(request, response);
 		} else {
@@ -85,6 +85,7 @@ public class LoginCtrl extends HttpServlet {
 					HttpSession session = request.getSession();
 
 					session.setAttribute("user", bean);
+					
 
 					//request.setAttribute("myname", bean.getFname());
 

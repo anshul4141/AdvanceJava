@@ -1,3 +1,4 @@
+
 package com.rays.pro4.Util;
 
 import java.util.Properties;
@@ -6,15 +7,15 @@ import java.util.ResourceBundle;
 import javax.mail.Message;
 import javax.mail.PasswordAuthentication;
 import javax.mail.Session;
-import javax.mail.internet.InternetAddress;
 import javax.mail.Transport;
+import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 
-
+import com.rays.pro4.Exception.ApplicationException;
 /**
  * Email Utility provides Email Services.
  * 
- * @author Anshul Prajapati
+ * @author Sanket jain
  *
  */
 public class EmailUtility {
@@ -77,7 +78,7 @@ public class EmailUtility {
      * @throws ApplicationException
      */
     public static void sendMail(EmailMessage emailMessageDTO)
-            throws Exception {
+            throws ApplicationException {
 
         try {
 

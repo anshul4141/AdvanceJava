@@ -14,7 +14,7 @@ import com.rays.pro4.Bean.BaseBean;
 
 import com.rays.pro4.Bean.CourseBean;
 import com.rays.pro4.Exception.ApplicationException;
-import com.rays.pro4.Exception.DataBaseException;
+import com.rays.pro4.Exception.DatabaseException;
 
 import com.rays.pro4.Model.CourseModel;
 import com.rays.pro4.Util.DataUtility;
@@ -121,7 +121,7 @@ public class CourseListCtl extends BaseCtl {
 			log.error(e);
 			ServletUtility.handleException(e, request, response);
 			return;
-		} catch (DataBaseException e) {
+		} catch (DatabaseException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
@@ -210,7 +210,7 @@ public class CourseListCtl extends BaseCtl {
 			log.error(e);
 			ServletUtility.handleException(e, request, response);
 			return;
-		} catch (DataBaseException e) {
+		} catch (DatabaseException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}

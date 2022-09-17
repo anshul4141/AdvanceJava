@@ -12,9 +12,10 @@
 <body>
 	<form action="">
 		<center>
-			<table border="6px"
-				style="box-shadow: 3px 3px 5px black; color: cyan">
-				<tr style="color: black">
+			<table border="1" width="100%" align="center" cellpadding=8px
+				cellspacing=".2">
+
+				<tr style="background: skyblue">
 					<td>id</td>
 					<td>rollNo</td>
 					<td>fname</td>
@@ -27,7 +28,7 @@
 				while (it.hasNext()) {
 					StudentBean bean = it.next();
 				%>
-				<tr style="color: red">
+				<tr>
 					<td><%=bean.getId()%></td>
 					<td><%=bean.getRollNo()%></td>
 					<td><%=bean.getFname()%></td>

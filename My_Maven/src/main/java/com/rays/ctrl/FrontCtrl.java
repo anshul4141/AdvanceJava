@@ -9,12 +9,12 @@ import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 import javax.servlet.annotation.WebFilter;
-import javax.servlet.http.HttpFilter;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+
 @WebFilter("*.do")
-public class FrontCtrl extends HttpFilter implements Filter {
+public class FrontCtrl implements Filter {
 
 	public void destroy() {
 		// TODO Auto-generated method stub
@@ -25,23 +25,22 @@ public class FrontCtrl extends HttpFilter implements Filter {
 
 		HttpServletRequest request = (HttpServletRequest) req;
 		HttpServletResponse response = (HttpServletResponse) res;
-		
+
 		HttpSession session = request.getSession();
-		
+
 		if (session.getAttribute("userid") == null) {
-			
+
 			RequestDispatcher rd = request.getRequestDispatcher("UserLogin.jsp");
-			
+
 			request.setAttribute("error", "Session Timed out Please login again");
-			
+
 			rd.forward(request, response);
 		} else {
-			
+
 			chain.doFilter(request, response);
 
 		}
 
-		
 	}
 
 	public void init(FilterConfig fConfig) throws ServletException {

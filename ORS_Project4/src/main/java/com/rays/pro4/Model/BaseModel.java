@@ -7,19 +7,18 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Timestamp;
 
-import org.apache.log4j.Logger;
+import org.apache.log4j.Logger; 
 
 import com.rays.pro4.Bean.DropdownListBean;
 import com.rays.pro4.Exception.ApplicationException;
-import com.rays.pro4.Exception.DataBaseException;
+import com.rays.pro4.Exception.DatabaseException;
 import com.rays.pro4.Util.DataUtility;
 import com.rays.pro4.Util.JDBCDataSource;
-
 
 /**
  * The Class BaseModel
  * 
- * @author  Anshul Prajapati
+ * @author  Sanket jain
  *
  */
 public abstract class BaseModel implements  Serializable,DropdownListBean {
@@ -74,7 +73,7 @@ public abstract class BaseModel implements  Serializable,DropdownListBean {
 		return(int)(id-next.getId());
 	}
 	
-	public long nextPK()throws DataBaseException{
+	public long nextPK()throws DatabaseException{
 		log.debug("Model nextPK Started");;
 		Connection conn=null;
 		long pk=0;
@@ -88,7 +87,7 @@ public abstract class BaseModel implements  Serializable,DropdownListBean {
 			rs.close();
 		}catch(Exception e){
 			log.error("Database Exception..",e);
-			throw new DataBaseException("Excertion : Exception in getting PK");
+			throw new DatabaseException("Excertion : Exception in getting PK");
 			
 		}finally{
 			JDBCDataSource.closeConnection(conn);
@@ -102,7 +101,7 @@ public abstract class BaseModel implements  Serializable,DropdownListBean {
 	
 	
 	
-	public void updateCreatesInfo()throws Exception{
+	public void updateCreatesInfo()throws ApplicationException{
 		log.debug("Model update Started..."+createdBy);
 		
 		Connection conn=null;
@@ -176,5 +175,3 @@ public abstract class BaseModel implements  Serializable,DropdownListBean {
 	}
 	
 }
-
-	

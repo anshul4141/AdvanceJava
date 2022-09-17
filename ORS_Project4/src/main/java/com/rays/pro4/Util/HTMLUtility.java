@@ -1,6 +1,7 @@
-package com.rays.pro4.Util;
+ package com.rays.pro4.Util;
 
 import java.util.Collections;
+
 import java.util.HashMap;
 import java.util.List;
 import java.util.Set;
@@ -10,19 +11,14 @@ import javax.servlet.http.HttpServletRequest;
 import com.rays.pro4.Bean.DropdownListBean;
 import com.rays.pro4.Model.BaseModel;
 
-;
-
-
-
 /**
  *  HTML Utility class to produce HTML contents like Dropdown List.
  *  
- * @author Anshul Prajapati
+ * @author Sanket jain
  *
  */
-
 public class HTMLUtility {
-	
+
 	public static String getList(String name, String selectedVal,
             HashMap<String, String> map) {
 
@@ -79,7 +75,7 @@ public class HTMLUtility {
         String val = null;
 
         for (DropdownListBean obj : dd) {
-            key = obj.getKey();
+            key = obj.getkey();
             val = obj.getValue();
 
             if (key.trim().equals(selectedVal)) {
@@ -162,5 +158,5 @@ public class HTMLUtility {
          */
         return sb.toString();
     }
-
+	
 }

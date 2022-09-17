@@ -12,7 +12,7 @@ import org.apache.log4j.Logger;
 import com.rays.pro4.Bean.BaseBean;
 import com.rays.pro4.Bean.UserBean;
 import com.rays.pro4.Exception.ApplicationException;
-import com.rays.pro4.Exception.RecordNotFountException;
+import com.rays.pro4.Exception.RecordNotFoundException;
 import com.rays.pro4.Model.UserModel;
 import com.rays.pro4.Util.DataUtility;
 import com.rays.pro4.Util.DataValidator;
@@ -117,7 +117,7 @@ public class ForgetPasswordCtl extends BaseCtl{
             try {
                 model.forgetPassword(bean.getLogin());
                 ServletUtility.setSuccessMessage("Password has been sent to your email id.", request);
-            } catch (RecordNotFountException e) {
+            } catch (RecordNotFoundException e) {
             	ServletUtility.setBean(bean, request);
 				ServletUtility.setErrorMessage("Login Id does'nt Exists", request);
 				ServletUtility.forward(getView(), request, response);
@@ -127,10 +127,7 @@ public class ForgetPasswordCtl extends BaseCtl{
             	log.error(e);
                 ServletUtility.handleException(e, request, response);
                 return;
-            } catch (Exception e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+            }
         }
             else if (OP_RESET.equalsIgnoreCase(op)) {
             	

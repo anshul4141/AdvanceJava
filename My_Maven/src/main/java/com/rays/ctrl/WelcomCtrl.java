@@ -13,6 +13,8 @@ public class WelcomCtrl extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		
+		response.sendRedirect("WelcomePage.jsp");
 
 	}
 
@@ -20,6 +22,8 @@ public class WelcomCtrl extends HttpServlet {
 			throws ServletException, IOException {
 
 		RequestDispatcher rd = request.getRequestDispatcher("UserLogin.jsp");
+		
+		request.setAttribute("succ", "LogOut Successfully");
 
 		rd.forward(request, response);
 

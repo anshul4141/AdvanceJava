@@ -11,23 +11,21 @@ import org.apache.log4j.Logger;
 import com.rays.pro4.Bean.CollegeBean;
 import com.rays.pro4.Bean.StudentBean;
 import com.rays.pro4.Exception.ApplicationException;
-import com.rays.pro4.Exception.DataBaseException;
+import com.rays.pro4.Exception.DatabaseException;
 import com.rays.pro4.Exception.DuplicateRecordException;
 import com.rays.pro4.Util.JDBCDataSource;
-
-
 
 /**
  * JDBC Implementation of Student Model.
  * 
- * @author Anshul Prajapati
+ * @author Sanket jain
  *
  */
 public class StudentModel {
 
 	private static Logger log = Logger.getLogger(StudentModel.class);
 
-	public Integer nextPK() throws DataBaseException {
+	public Integer nextPK() throws DatabaseException {
 
 		log.debug("Model nextPK Started");
 		Connection conn = null;
@@ -44,7 +42,7 @@ public class StudentModel {
 
 		} catch (Exception e) {
 			log.error("Database Exception .....", e);
-			throw new DataBaseException("Exception :Exception in getting PK");
+			throw new DatabaseException("Exception :Exception in getting PK");
 
 		} finally {
 			JDBCDataSource.closeConnection(conn);
@@ -393,6 +391,3 @@ public class StudentModel {
 	}
 
 }
-
-
-	

@@ -13,7 +13,7 @@ import org.apache.log4j.Logger;
 import com.rays.pro4.Bean.BaseBean;
 import com.rays.pro4.Bean.UserBean;
 import com.rays.pro4.Exception.ApplicationException;
-import com.rays.pro4.Exception.RecordNotFountException;
+import com.rays.pro4.Exception.RecordNotFoundException;
 import com.rays.pro4.Model.UserModel;
 import com.rays.pro4.Util.DataUtility;
 import com.rays.pro4.Util.DataValidator;
@@ -181,11 +181,8 @@ public class ChangePasswordCtl extends BaseCtl{
 				ServletUtility.handleException(e, request, response);
 				return;
 
-			} catch (RecordNotFountException e) {
+			} catch (RecordNotFoundException e) {
 				ServletUtility.setErrorMessage(e.getMessage(), request);
-			} catch (Exception e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
 			}
 		} else if (OP_CHANGE_MY_PROFILE.equalsIgnoreCase(op)) {
 			ServletUtility.redirect(ORSView.MY_PROFILE_CTL, request, response);

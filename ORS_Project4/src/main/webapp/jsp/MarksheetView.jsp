@@ -55,7 +55,7 @@
                 
                   <tr>
                     <th align="left"> Name <span style="color: red">*</span> :</th>
-                    <td><%=HTMLUtility.getList("studentld",String.valueOf(bean.getStudentId()),l)%></td>
+                    <td><%=HTMLUtility.getList("studentld",String.valueOf(bean.getStudentld()),l)%></td>
                
                     <td style="position: fixed"> 
                     <font color="red" > <%=ServletUtility.getErrorMessage("studentId", request)%></font></td>
